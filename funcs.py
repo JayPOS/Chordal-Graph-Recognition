@@ -47,7 +47,7 @@ def trataCiclos(ciclos):
 
 def identificaCiclo(edge_list):
     #faz a busca em largura normal e depois quando aparece um vertice vizinho marcado
-    #  verifica se ele ja apareceu antes, se sim, verifica se consegue achar ciclo, senão continua a busca.
+    #  verifica se ele ja apareceu antes, se sim, verifica se consegue achar ciclo, senao continua a busca.
     lst_aberta = []
     ciclo =[]
     lst_ciclos = []
@@ -91,6 +91,6 @@ def is_chordal(ciclos, adj_list):
                 break
 
         else:
-            print("Ciclo não cordal = ", ciclo)
+            print("Ciclo nao cordal = ", ciclo)
             return False
     return True

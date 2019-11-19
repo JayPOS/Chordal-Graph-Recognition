@@ -1,0 +1,3 @@
+import chordal
+
+chordal.main()

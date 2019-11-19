@@ -36,18 +36,7 @@ class Graph:
         self.G = nx.read_edgelist(path, nodetype=int)
 
     def leAdjList(self, path):
-        adjlist = []
-        with open(path, "r") as f:
-            for lines in f:
-                if (lines[0] != '#'):
-                    adjlist.append(lines.split())
-        
-        for i in range(len(adjlist)):
-            adjlist[i].pop(0)
-            for j in range(len(adjlist[i])):
-                adjlist[i][j] = int(adjlist[i][j])
-
-        return adjlist
+    	self.G = nx.read_adjlist(path, nodetype=int)
 
     def escreveEdgeList(self, path):
         nx.write_edgelist(self.G, path)
@@ -74,16 +63,39 @@ class Graph:
 
     
 
+def inicializa(path):
+	with open(path, "r") as f:
+		line = f.readline()
+		while line[0] == "#" :
+			line = f.readline()
 
-edges = [(1,2), (1, 3), (3, 4), (4, 2), (0, 1)]
-print(f.identificaCiclo(edges))
+		n = int(line[0])
+		m = int(line[1])
+		edges = []
+		for i in range(m):
+			line = f.readline().split()
+			edges.append(( int(line[0]), int(line[1]) ))
 
-# print("aaa " + str(edges[0][1]))
-g = Graph(5, edges)
-Graph.criaGrafo(g)
-g = Graph.criaArq(g)
+		g = Graph(g, n, edges)
+		g = g.criaGrafo()
+		return g
 
-x = g.gera_entrada()
-adj = g.gera_adlist()
+def main():
+	path = str(raw_input("Digite o nome do arquivo: "))
+	graph = inicializa(path)
+	adj_list = graph.gera_adlist()
 
-print(f.is_chordal(f.identificaCiclo(g.gera_entrada()), adj))
+
+
+# edges = [(1,2), (1, 3), (3, 4), (4, 2), (0, 1)]
+# print(f.identificaCiclo(edges))
+
+# # print("aaa " + str(edges[0][1]))
+# g = Graph(5, edges)
+# Graph.criaGrafo(g)
+# g = Graph.criaArq(g)
+
+# x = g.gera_entrada()
+# adj = g.gera_adlist()
+
+# print(f.is_chordal(f.identificaCiclo(g.gera_entrada()), adj))
