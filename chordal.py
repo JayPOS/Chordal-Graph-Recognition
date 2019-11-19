@@ -49,41 +49,37 @@ class Graph:
     
     def gera_adlist(self):
         adjlist = []
-        x = g.gera_entrada()
+        x = self.gera_entrada()
         for vertice in range(1, self.n +1):
             adjlist.append([])
-        
+
         for aresta in x:
             # print("p.aresta2 ", aresta[0], " p.aresta1 ", aresta[1])
             adjlist[aresta[0]-1].append(aresta[1])
             adjlist[aresta[1]-1].append(aresta[0])
-            
+
 
         return adjlist
 
-    
+    def is_chordal(self):
+    	ciclos = f.identificaCiclo(self.gera_entrada())
+    	adj_list = self.gera_adlist()
+    	for ciclo in ciclos:
+    		for vertice in ciclo:
+    			grau = 0
+    			for vizinho in adj_list[vertice]:
+    				if vizinho in ciclo:
+    					grau+=1
+    			if grau >= 3:
+    				break
+    		else:
+    			print("Ciclo nao cordal = ", ciclo)
+    			return False
+    	return True
 
-def inicializa(path):
-	with open(path, "r") as f:
-		line = f.readline()
-		while line[0] == "#" :
-			line = f.readline()
 
-		n = int(line[0])
-		m = int(line[1])
-		edges = []
-		for i in range(m):
-			line = f.readline().split()
-			edges.append(( int(line[0]), int(line[1]) ))
 
-		g = Graph(g, n, edges)
-		g = g.criaGrafo()
-		return g
 
-def main():
-	path = str(raw_input("Digite o nome do arquivo: "))
-	graph = inicializa(path)
-	adj_list = graph.gera_adlist()
 
 
 

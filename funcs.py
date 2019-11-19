@@ -75,22 +75,3 @@ def identificaCiclo(edge_list):
                             
     return trataCiclos(lst_ciclos)
 
-
-
-def is_chordal(ciclos, adj_list):
-    for ciclo in ciclos:
-        for vertice in ciclo:
-            grau = 0
-
-            # print("opa", vertice)
-            for vizinho in adj_list[vertice]:
-                if vizinho in ciclo:
-                    grau+=1
-            
-            if grau >= 3:
-                break
-
-        else:
-            print("Ciclo nao cordal = ", ciclo)
-            return False
-    return True
