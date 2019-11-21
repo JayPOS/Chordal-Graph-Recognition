@@ -1,12 +1,8 @@
-import chordal as cd
-import funcs as f
-
+from src import chordal as cd
 
 def inicializa(grafo, path): # formato de lista de arestas!!!!!
 	with open(path, "r") as f:
 		line = f.readline().split()
-		while line[0] == "#" :
-			line = f.readline().split()
 
 		n = int(line[0])
 		m = int(line[1])
@@ -17,16 +13,15 @@ def inicializa(grafo, path): # formato de lista de arestas!!!!!
 
 		grafo = cd.Graph(n, edges)
 		grafo = grafo.criaGrafo(grafo)
-		# print(list(grafo.edges()))
+
 		return grafo
 
 def main(): # aquivo do path é do estilo do teste.txt
-	path = str(input("Digite o nome do arquivo: "))
+	#path = str(input("Digite o nome do arquivo: "))
 	graph = None
-	graph = inicializa(graph, path)
-	adj_list = graph.gera_adlist()
-	print(adj_list)
+	graph = inicializa(graph, "./data/teste6.txt")
 	print(graph.is_chordal())
+	print(graph.is_chordal_brute())
 
 
 main()

@@ -1,3 +1,19 @@
+def criarListaDeLista(i):
+    a = []
+
+    for i in range(i):
+        a.append([])
+
+    return a
+
+def isEmpty(lst):
+    if len(lst) == 0:
+        return True
+    return False
+
+def listSubtract(a, b):
+    return [item for item in a if item not in b]
+
 def ta_dentro(ciclo, ciclos):
     for x in ciclos:
         if len(x) == len(ciclo):
