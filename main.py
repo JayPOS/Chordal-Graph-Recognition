@@ -1,4 +1,5 @@
 from src import chordal as cd
+import networkx as nx
 
 def inicializa(grafo, path): # formato de lista de arestas!!!!!
 	with open(path, "r") as f:
@@ -19,9 +20,10 @@ def inicializa(grafo, path): # formato de lista de arestas!!!!!
 def main(): # aquivo do path é do estilo do teste.txt
 	#path = str(input("Digite o nome do arquivo: "))
 	graph = None
-	graph = inicializa(graph, "./data/teste7.txt")
+	graph = inicializa(graph, "./data/teste.txt")
 	print(graph.is_chordal())
 	print(graph.is_chordal_brute(graph.n))
+	print(graph.componentes)
 
 
 main()
