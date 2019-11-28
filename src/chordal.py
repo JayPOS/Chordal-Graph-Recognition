@@ -130,48 +130,43 @@ class Graph:
     #Retorna o ciclo problematico
     #Caso contrario, retorna None
     def is_chordal(self):
-        if self.is_connected():
-            lex = self.get_lexBfs()
+        lex = self.get_lexBfs()
 
-            L = []
-            for i in range(self.n):
-                L.append(set())
+        L = []
+        for i in range(self.n):
+            L.append(set())
 
-            for v in lex:
-                if not isEmpty(v[2]):
-                    u = min(v[2])
-                    L[u] = L[u].union(set([lex[x][0] for x in v[2]]) - {lex[u][0]})
-                else:
-                    break
+        for v in lex:
+            if not isEmpty(v[2]):
+                u = min(v[2])
+                L[u] = L[u].union(set([lex[x][0] for x in v[2]]) - {lex[u][0]})
+            else:
+                break
 
-            for i in range(self.n):
-                if not isEmpty(L[i] - set(lex[i][1])):
-                    problema = list(L[i]) + lex[i][1]
-                    problema.append(lex[i][0])
-                    return False, problema
-            return True
-        else:
-            return False, "Nao conexo"
+        for i in range(self.n):
+            if not isEmpty(L[i] - set(lex[i][1])):
+                problema = list(L[i]) + lex[i][1]
+                problema.append(lex[i][0])
+                return False, problema
+        return True
 
     #Retorna o ciclo problematico
     #Caso contrario, retorna None
     def is_chordal_brute(self):
-        if self.is_connected():
-            ciclos = f.identificaCiclo(self.gera_entrada())
-            adj_list = self.gera_adlist()
-            for ciclo in ciclos:
-                for vertice in ciclo:
-                    grau = 0
-                    for vizinho in adj_list[vertice]:
-                        if vizinho in ciclo:
-                            grau += 1
-                    if grau >= 3:
-                        break
-                else:
-                    return False, ciclo
-            return True
-        else:
-            return False, "Nao conexo"
+        
+        ciclos = f.identificaCiclo(self.gera_entrada()) # chama funcao que identifica os ciclos
+        adj_list = self.gera_adlist() # gera lst de adjacencia.
+        for ciclo in ciclos: # for x in ciclos
+            for vertice in ciclo: # for v em x
+                grau = 0 #grau = 0
+                for vizinho in adj_list[vertice]: # for vizinho em N(v)
+                    if vizinho in ciclo: # se vizinho em ciclo
+                        grau += 1 # grau = grau + 1
+                if grau >= 3: # se grau maior ou igual a 3, para e retorna true
+                    break
+            else: # se nao ha v com grau >= 3 no ciclo, retorna false e o ciclo.
+                return False, ciclo
+        return True
 
 # edges = [(1,2), (1, 3), (3, 4), (4, 2), (0, 1)]
 # print(f.identificaCiclo(edges))
