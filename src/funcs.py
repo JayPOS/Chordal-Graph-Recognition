@@ -57,23 +57,28 @@ def achaCiclo(v_inicial, v, lst_aberta, inicio, ciclo, ciclos):
 def trataCiclos(ciclos): # Retira os ciclos de tamanho maior ou igual a 4 da lista de ciclos.
     lst_tratada = []
     for ciclo in ciclos: # for x em ciclos
+        #print(ciclo)
         if len(ciclo) >= 4: # se tamanho de x é maior ou igual a 4
             lst_tratada.append(ciclo) # adiciona o ciclo achado.
     return lst_tratada # retorna lst_tratada.
 
 
-def identificaCiclo(edge_list):
+def identificaCiclo(edge_list, n):
     # faz a busca em largura normal e depois quando aparece um vertice vizinho marcado
     #  verifica se ele ja apareceu antes, se sim, verifica se consegue achar ciclo no Acha ciclo, senao continua a busca.
     lst_aberta = []
     ciclo =[]
     lst_ciclos = []
     fila = []
+    visitados = []
+    for i in range(n):
+        visitados.append(0)
 
     fila.append(0) # comeca pelo 0, adiciona ele na fila.
     while len(fila) != 0:
 
         vertice = fila.pop(0) # coloca 0 no vertice atual
+        visitados[0] = 1
                             # e tira o 0 da fila
         for aresta in edge_list: # for arestas na lista de arestas
             if aresta not in lst_aberta: # se aresta nao ta em lst_aberta
@@ -86,11 +91,18 @@ def identificaCiclo(edge_list):
                             achaCiclo(aresta[1], aresta[1], lst_aberta, True, ciclo, lst_ciclos) #chama achaCiclo com o segundo vert da aresta como v_inicial e atual.
                         else: 
                             fila.append(aresta[1]) #senao adciona o vertice na fila
+                            visitados[aresta[1]] = 1
                     elif vertice == aresta[1]: # senao se vertice é o segundo elem. da aresta.
                         if aresta[0] in fila: # se o primeiro elem. da aresta está na fila. 
                             achaCiclo(aresta[0], aresta[0], lst_aberta, True, ciclo, lst_ciclos) # chama achaCiclo com o prim vertice como v_inicial e atual
                         else:
                             fila.append(aresta[0]) #senao adiciona o prim. elemento na fila
+                            visitados[aresta[0]] = 1
+        if len(fila) == 0:
+            for x in range(n):
+                if visitados[x] == 0:
+                    fila.append(x)
+                    visitados[x] = 1
                             
     return trataCiclos(lst_ciclos) # retorna os ciclos tratados. (ler trataCiclos(ciclos))
 

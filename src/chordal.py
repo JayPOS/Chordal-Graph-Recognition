@@ -152,9 +152,9 @@ class Graph:
 
     #Retorna o ciclo problematico
     #Caso contrario, retorna None
-    def is_chordal_brute(self):
+    def is_chordal_brute(self, n):
         
-        ciclos = f.identificaCiclo(self.gera_entrada()) # chama funcao que identifica os ciclos
+        ciclos = f.identificaCiclo(self.gera_entrada(), n) # chama funcao que identifica os ciclos
         adj_list = self.gera_adlist() # gera lst de adjacencia.
         for ciclo in ciclos: # for x in ciclos
             for vertice in ciclo: # for v em x
