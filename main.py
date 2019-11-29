@@ -20,7 +20,7 @@ def inicializa(grafo, path): # formato de lista de arestas!!!!!
 def main(): # aquivo do path é do estilo do teste.txt
 	#path = str(input("Digite o nome do arquivo: "))
 	graph = None
-	graph = inicializa(graph, "./data/teste.txt")
+	graph = inicializa(graph, "./data/teste7.txt")
 	print(graph.is_chordal())
 	print(graph.is_chordal_brute(graph.n))
 	print(graph.componentes)

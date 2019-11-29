@@ -8,15 +8,16 @@ class Graph:
         self.G = nx.Graph()
         self.n = n
         self.edges = edges
-        self.componentes = []
+        self.componentes = None
 
     @staticmethod
     def criaGrafo(self):
-        for i in range(1, self.n + 1):
+        for i in range(1, self.n):
             self.G.add_node(i)
 
         self.G.add_edges_from(self.edges)
-        self.componentes = self.retornaComponentes()
+        if nx.is_connected(self.G) is False:
+            self.componentes = [self.G.subgraph(c).copy() for c in nx.connected_components(self.G)]
         return self
 
     def criaArq(self):
@@ -62,22 +63,6 @@ class Graph:
 
         return adjlist
 
-    def retornaComponentes(self):
-        componentes = []
-        tam = 0
-        s = nx.connected_components(self.G)
-        for x in range(nx.number_connected_components(self.G)):
-            componentes.append([])
-        for i in s:
-            for node in i:
-                componentes[tam].append(node)
-            tam+= 1
-        return componentes
-
-    def separaComponentes(self):
-        if self.is_connected is False:
-            
-            return
     
     def is_connected(self):
         def recursiveDfs(adjLst, vis, i):
