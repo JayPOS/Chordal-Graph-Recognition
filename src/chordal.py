@@ -1,24 +1,26 @@
 import networkx as nx
 from src import funcs as f
-from src.funcs import criarListaDeLista, listSubtract, isEmpty
+from src.funcs import criarListaDeLista, isEmpty
 
 
 class Graph:
-    def __init__(self, n, edges):
+    def __init__(self, n, edges, naoSepararComps = None):
         self.G = nx.Graph()
         self.n = n
         self.edges = edges
-        self.componentes = None
+        self.componentes = []
 
-    @staticmethod
-    def criaGrafo(self):
-        for i in range(1, self.n):
-            self.G.add_node(i)
+        if naoSepararComps is None or naoSepararComps is False:
+            #Cria os componentes para o networkx
+            for i in range(n):
+                self.G.add_node(i)
 
-        self.G.add_edges_from(self.edges)
-        if nx.is_connected(self.G) is False:
-            self.componentes = [self.G.subgraph(c).copy() for c in nx.connected_components(self.G)]
-        return self
+            self.G.add_edges_from(self.edges)
+            componentes = [self.G.subgraph(c).copy() for c in nx.connected_components(self.G)]
+            for comp in componentes:
+                minNode = min(comp.nodes())
+                self.componentes.append([minNode, Graph(comp.number_of_nodes(), [[e[0] - minNode, e[1] - minNode] for e in comp.edges()], True)])
+
 
     def criaArq(self):
         with open("teste.txt", "w+") as f:
@@ -57,7 +59,6 @@ class Graph:
         adjlist = criarListaDeLista(self.n)
 
         for aresta in self.edges:
-            #print("p.aresta2 ", aresta[0], " p.aresta1 ", aresta[1])
             adjlist[aresta[0]].append(aresta[1])
             adjlist[aresta[1]].append(aresta[0])
 
@@ -79,6 +80,7 @@ class Graph:
             if not v:
                 return False
         return True
+
 
     def get_lexBfs(self):
         vertex = []
@@ -134,26 +136,36 @@ class Graph:
     #Retorna o ciclo problematico
     #Caso contrario, retorna None
     def is_chordal(self):
-        lex = self.get_lexBfs()
+        def elimPerfeita(grafo, correcao = None):
+            lex = grafo.get_lexBfs()
 
-        L = []
-        for i in range(self.n):
-            L.append(set())
+            L = []
+            for i in range(grafo.n):
+                L.append(set())
 
-        for v in lex:
-            if not isEmpty(v[2]):
-                u = min(v[2])
-                L[u] = L[u].union(set([lex[x][0] for x in v[2]]) - {lex[u][0]})
-            else:
-                break
+            for v in lex:
+                if not isEmpty(v[2]):
+                    u = min(v[2])
+                    L[u] = L[u].union(set([lex[x][0] for x in v[2]]) - {lex[u][0]})
+                else:
+                    break
 
-        for i in range(self.n):
-            if not isEmpty(L[i] - set(lex[i][1])):
-                problema = list(L[i]) + lex[i][1]
-                problema.append(lex[i][0])
-                return False, problema
+            for i in range(grafo.n):
+                if not isEmpty(L[i] - set(lex[i][1])):
+                    problema = list(L[i]) + lex[i][1]
+                    problema.append(lex[i][0])
+                    if correcao is not None:
+                        return False, [vertice+correcao for vertice in problema]
+                    else:
+                        return False, problema
+            return True
+
+        for componente in self.componentes:
+            elim = elimPerfeita(componente[1], componente[0])
+            if elim is not True:
+                return elim
+
         return True
-
     #Retorna o ciclo problematico
     #Caso contrario, retorna None
     def is_chordal_brute(self, n):
