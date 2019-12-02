@@ -400,6 +400,12 @@
 			O Grafo de Intervalo tem várias aplicações tais quais análise de cadeias de DNA e seriação arqueológica.
 			
 			Existem  muitos  estudos  sobre  grafos  e  ordens  de  intervalo,   tanto  pelo  interesse  puramente  teórico,  quanto  pelo  papel  central  que  desempenham  em  certas aplicações.
+			
+			 Eles surgem em muitas aplicações práticas que requerem a construção de uma linha do tempo onde, a cada evento relacionado ao problema, corresponde um intervalo representando a sua duração.
+			 
+			 Conforme, dentre tais aplicações, estão aquelas relacionadas a planejamento,  alocação de tarefas,  arqueologia,  lógica temporal,  diagnóstico médico  e desenho de circuitos integrados.
+			 
+			 Há também aplicações não relacionadas com eventos numa linha de tempo. Nesta categoria, estão aplicações na área de genética, problema do mapeamento físico de DNA e psicologia comportamental.
 			\par Eles surgem em muitas aplicações práticas que requerem a construção de uma linha do tempo onde, a cada evento relacionado ao problema, corresponde um intervalo representando a sua duração..
 		\section{Testes e métricas}	
 			\paragraph{}Abaixo, é exibido os resultados obtidos nos testes, o ambiente de teste usados no desenvolvimento do projeto e as métricas  obtidas.
@@ -428,7 +434,15 @@
 				
 				
 		\section{Instruções de uso}
-			\paragraph{}Abaixo, será apresentado o passo a passo de como executar os algoritmos nos sistemas operacionais Linux e Windows e MacOs.
+			\paragraph{}Abaixo, será apresentado o passo a passo de como executar os algoritmos nos sistemas operacionais Linux e Windows. Foi implementado também um editor de grafos, para gerar o arquivo de texto que será usado no algoritmo de Reconhecimento de Grafos Cordais. Para rodar o editor é preciso fazer os seguintes passos.
+			
+			\begin{enumerate}
+				\item Para rodar o editor para iniciar o programa:
+				\item Extraia o .zip entre na pasta do programa no terminal e rode:
+				\textbf{java --module-path "Nome do sistema operacional"/ --add-modules=javafx.controls -jar chordalgraph-0.0.1.jar}
+			\end{enumerate}
+			
+			
 			\subsection{Linux}
 				\begin{enumerate}
 					
@@ -439,19 +453,16 @@
 					\textbf{sudo apt-get openjdk-11-jdk}
 					\item Instale o Openjfx pelo comando:
 					\textbf{sudo apt-get install openjfx}
-					\item java --module-path .$\backslash$ linux $\backslash$ --add-modules=javafx.controls -jar chordalgraph-0.0.1.jar
-					
-					
-					
+					\item Entre o na pasta do programa no terminal e rode \textbf{java --module-path linux/ --add-modules=javafx.controls -jar chordalgraph-0.0.1.jar}
 					
 				\end{enumerate}
 			\subsection{Windows}
 			\begin{enumerate}
-				\item Baixar o OpenJDK 11
-				\item Baixar o OpenJFX
-				\item Copiar o conteúdo da pasta bin do OpenJFX e colar na bin do OpenJDK11
-				\item Caso a versão do Java não estiver sendo alterada (por conta da versão antiga instalada), usar o caminho completo do OpenJDK11 pra rodar o programa 
-				- "C:$\backslash$ Program Files$\backslash$ Java$\backslash$ jdk11$\backslash$ bin$\backslash$ java --module-path windows --add-modules=javafx.controls -jar"
+				\item Baixar o \textbf{OpenJDK 11}
+				\item Baixar o \textbf{OpenJDK 11}
+				\item Copiar o conteúdo da pasta bin do \textbf{OpenJFX} e colar na bin do \textbf{OpenJDK11}
+				\item Caso a versão do Java não estiver sendo alterada (por conta da versão antiga instalada), usar o caminho completo do \textbf{OpenJDK11} pra rodar o programa 
+				- \textbf{"C:\textbackslash Program Files\textbackslash Java\textbackslash jdk11\textbackslash bin\textbackslash java --module-path windows --add-modules=javafx.controls -jar"}
 			\end{enumerate}
 		\section{Referências}	
 			\begin{itemize}
