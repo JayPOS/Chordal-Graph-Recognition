@@ -1,0 +1,33 @@
+\babel@toc {portuguese}{}
+\contentsline {section}{\numberline {1}Introdu\IeC {\c c}\IeC {\~a}o}{2}
+\contentsline {paragraph}{}{2}
+\contentsline {section}{\numberline {2}Defini\IeC {\c c}\IeC {\~o}es}{2}
+\contentsline {section}{\numberline {3}Implementa\IeC {\c c}\IeC {\~a}o}{3}
+\contentsline {paragraph}{}{3}
+\contentsline {subsection}{\numberline {3.1}For\IeC {\c c}a Bruta}{3}
+\contentsline {paragraph}{}{3}
+\contentsline {paragraph}{}{3}
+\contentsline {subsection}{\numberline {3.2}Fun\IeC {\c c}\IeC {\~o}es do Algoritmo For\IeC {\c c}a Bruta}{4}
+\contentsline {subsection}{\numberline {3.3}Algoritmo Otimizado (Busca em Largura Lexicogr\IeC {\'a}fica)}{6}
+\contentsline {paragraph}{}{6}
+\contentsline {paragraph}{}{6}
+\contentsline {paragraph}{}{6}
+\contentsline {paragraph}{}{6}
+\contentsline {paragraph}{}{6}
+\contentsline {subsection}{\numberline {3.4}Fun\IeC {\c c}\IeC {\~o}es do Algoritmo Otimizado}{7}
+\contentsline {paragraph}{}{8}
+\contentsline {paragraph}{}{8}
+\contentsline {section}{\numberline {4}Parte 2}{8}
+\contentsline {subsection}{\numberline {4.1}Como foi feito?}{8}
+\contentsline {section}{\numberline {5}Testes e m\IeC {\'e}tricas}{9}
+\contentsline {paragraph}{}{9}
+\contentsline {subsection}{\numberline {5.1}Ambiente de teste}{9}
+\contentsline {subsection}{\numberline {5.2}Testes}{9}
+\contentsline {paragraph}{}{9}
+\contentsline {section}{\numberline {6}Instru\IeC {\c c}\IeC {\~o}es de uso}{10}
+\contentsline {paragraph}{}{10}
+\contentsline {subsection}{\numberline {6.1}Linux}{10}
+\contentsline {subsection}{\numberline {6.2}Windows}{11}
+\contentsline {section}{\numberline {7}Refer\IeC {\^e}ncias}{11}
+\contentsline {section}{\numberline {8}Agradecimentos}{11}
+\contentsline {paragraph}{}{11}

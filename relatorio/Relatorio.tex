@@ -406,7 +406,11 @@
 			 Conforme, dentre tais aplicações, estão aquelas relacionadas a planejamento,  alocação de tarefas,  arqueologia,  lógica temporal,  diagnóstico médico  e desenho de circuitos integrados.
 			 
 			 Há também aplicações não relacionadas com eventos numa linha de tempo. Nesta categoria, estão aplicações na área de genética, problema do mapeamento físico de DNA e psicologia comportamental.
-			\par Eles surgem em muitas aplicações práticas que requerem a construção de uma linha do tempo onde, a cada evento relacionado ao problema, corresponde um intervalo representando a sua duração..
+			\par Eles surgem em muitas aplicações práticas que requerem a construção de uma linha do tempo onde, a cada evento relacionado ao problema, corresponde um intervalo representando a sua duração.
+			
+			\subsection{Como foi feito?}
+				\par Por definição um grafo é um grafo de intervalos se e somente se, esse grafo é cordal e AT-Free, e para um grafo ser AT-Free, ele não possui tripla asteroidal. Uma tripla asteroidal é definida da seguinte forma: Três vértices de um grafo formam uma tripla asteroidal, se para todos dois vertices eles são conectados por um caminho evitando a vizinhança do terceiro. 
+				\par Logo foi feita uma função adicional para verificar se o grafo é AT-Free. Assim podemos checar se um grafo é um grafo de intervalos observando os retornos das funções "is\_chordal" e "is\_at\_free" se as duas forem validas, o retorno da função "is\_interval\_graph", que é a função que checa o que foi discutido acima, é verdadeiro.
 		\section{Testes e métricas}	
 			\paragraph{}Abaixo, é exibido os resultados obtidos nos testes, o ambiente de teste usados no desenvolvimento do projeto e as métricas  obtidas.
 			\subsection{Ambiente de teste}
